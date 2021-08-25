@@ -39,9 +39,10 @@ public class EmpWage implements ComputeWage{
 			private int computeEmpWage(CompanyEmpWage companyEmpWage)
 			{	
 				//local variables
-						int Emp_Hrs=0;
+						int Employee_Hrs=0;
 						int TotalEmpHrs=0;
 						int TotalWorkingDays=0;
+						int dailywage=0;
 					//computation
 						while(TotalEmpHrs<=companyEmpWage.maxHoursInMonth && TotalWorkingDays<companyEmpWage.numOfWorkingHours)
 						{
@@ -49,14 +50,15 @@ public class EmpWage implements ComputeWage{
 							int empCheck=(int) (Math.floor(Math.random()*10)%3);
 							switch (empCheck) 
 							{
-								case  IS_FULL_TIME: Emp_Hrs=16;break;
-								case IS_PART_TIME: Emp_Hrs=8;break;
-								default: Emp_Hrs=0;
+								case  IS_FULL_TIME: Employee_Hrs=16;break;
+								case IS_PART_TIME: Employee_Hrs=8;break;
+								default: Employee_Hrs=0;
 							}
-							TotalEmpHrs+=Emp_Hrs;
+							TotalEmpHrs+=Employee_Hrs;
 							System.out.println("Day#: "+TotalWorkingDays+" Emp Hr: "+TotalEmpHrs);
+							dailywage=Employee_Hrs*companyEmpWage.empRatePerHour;
+							System.out.println("Daily wage is "+dailywage);
 						}
-							
 							return TotalEmpHrs*companyEmpWage.empRatePerHour;
 							
 			}
