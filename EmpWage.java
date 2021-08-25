@@ -1,30 +1,37 @@
 package com.employee;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 public class EmpWage implements ComputeWage{
 			public static final int IS_PART_TIME=1;
 			public static final int IS_FULL_TIME =2;
 			
-			private int numOfCompany=0;
-			private CompanyEmpWage[] companyEmpWageArray;
+			private LinkedList<CompanyEmpWage> companyEmpWageList;
+			private Map<String,CompanyEmpWage> companyToEmpWageMap;
 			
 			//parameterised constructor for initializing members of a class
 			public EmpWage()
 			{
-				companyEmpWageArray=new CompanyEmpWage[5];
+				companyEmpWageList =new LinkedList<>();
+				companyToEmpWageMap =new HashMap<>();
 				
 			}
 			
 			public void addCompanyEmpWage(String company,int EMP_RATE_PER_HOUR,int NUM_WORKING_DAYS,int MAX_HRS_IN_MONTH)
 			{
-				companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company, EMP_RATE_PER_HOUR, NUM_WORKING_DAYS, MAX_HRS_IN_MONTH);
-				numOfCompany++;
+				CompanyEmpWage companyEmpWage =new CompanyEmpWage(company, EMP_RATE_PER_HOUR,NUM_WORKING_DAYS,MAX_HRS_IN_MONTH);
+				companyEmpWageList.add(companyEmpWage);
+				companyToEmpWageMap.put(company, companyEmpWage);
 			}
 			public void computeEmpWage()
 			{
-				for(int i=0;i<numOfCompany;i++)
+				for(int i=0;i<companyEmpWageList.size();i++)
 				{
-					companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
-					System.out.println(companyEmpWageArray[i]);
+					CompanyEmpWage companyEmpWage=companyEmpWageList.get(i);
+					companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
+					System.out.println(companyEmpWage);
 				}
 			}
 
