@@ -34,6 +34,12 @@ public class EmpWage implements ComputeWage{
 					System.out.println(companyEmpWage);
 				}
 			}
+			
+			@Override
+			public int getTotalWage(String company)
+			{
+				return companyToEmpWageMap.get(company).Total_Emp_Wage;
+			}
 
 			//method for calculating employee wages for different companies
 			private int computeEmpWage(CompanyEmpWage companyEmpWage)
@@ -71,6 +77,7 @@ public class EmpWage implements ComputeWage{
 				empWageBuilder.addCompanyEmpWage("Infy",20,2,10);
 				empWageBuilder.addCompanyEmpWage("TCS",10,4,20);
 				empWageBuilder.computeEmpWage();
+				System.out.println("Total wage for Infy Company: "+ empWageBuilder.getTotalWage("Infy"));
 			}
 
 }
