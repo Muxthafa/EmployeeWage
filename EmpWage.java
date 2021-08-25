@@ -1,6 +1,6 @@
 package com.employee;
 
-public class EmpWage {
+public class EmpWage implements ComputeWage{
 			public static final int IS_PART_TIME=1;
 			public static final int IS_FULL_TIME =2;
 			
@@ -19,7 +19,7 @@ public class EmpWage {
 				companyEmpWageArray[numOfCompany]=new CompanyEmpWage(company, EMP_RATE_PER_HOUR, NUM_WORKING_DAYS, MAX_HRS_IN_MONTH);
 				numOfCompany++;
 			}
-			private void computeEmpWage()
+			public void computeEmpWage()
 			{
 				for(int i=0;i<numOfCompany;i++)
 				{
@@ -52,7 +52,7 @@ public class EmpWage {
 							
 							return TotalEmpHrs*companyEmpWage.empRatePerHour;
 							
-						}
+			}
 			
 			public static void main(String[] args) 
 			{

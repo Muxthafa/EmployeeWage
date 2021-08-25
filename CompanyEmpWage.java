@@ -1,7 +1,9 @@
 package com.employee;
 
+
 public class CompanyEmpWage {
 		// TODO Auto-generated method stub
+	
 		public final String company;		//members of class
 		public final int empRatePerHour;
 		public final int numOfWorkingHours;
